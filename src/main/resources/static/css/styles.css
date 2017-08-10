@@ -2,10 +2,21 @@ body {
     font-family: sans-serif;
 }
 
-.column{
+table {
+    border-collapse: collapse;
+    width: 50%;
+}
+
+table, th, td {
+    border: 0.1em solid black;
+    text-align: center;
+}
+
+.header{
     font-weight: bold;
 }
 
 .row {
     font-style: italic;
 }
+
