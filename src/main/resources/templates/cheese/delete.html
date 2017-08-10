@@ -5,9 +5,13 @@
 <h1 th:text="${title}"></h1>
 
 <nav th:replace="fragments :: navigation"></nav>
-
+<br/>
 <form method="post">
-    <input type="text" name="cheeseName" />
+    <ul>
+        <li th:each="cheese : ${cheeses}"><input type="checkbox" th:text="${cheese.key}" name="cheeseNameDelete" th:value="${cheese.key}"/></li>
+
+    </ul>
+    <br/>
     <input type="submit" value="Delete Cheese" />
 </form>
 
