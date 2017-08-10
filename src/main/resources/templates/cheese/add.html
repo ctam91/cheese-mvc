@@ -5,10 +5,14 @@
     <h1 th:text="${title}">Default Title</h1>
 
     <nav th:replace="fragments :: navigation"></nav>
-
+    <br/>
     <form method="post">
+        <label>Cheese to Add:</label>
+        <br/>
         <input type="text" name="cheeseName" />
         <br/>
+        <br/>
+        <label>Description of cheese:</label>
         <br/>
         <textarea rows="4" cols="50" name="cheeseDescription"></textarea>
         <br/>
