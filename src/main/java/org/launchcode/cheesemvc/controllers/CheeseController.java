@@ -28,15 +28,18 @@ public class CheeseController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddForm(Model model){
         model.addAttribute("title", "Add Cheese");
+        model.addAttribute("cheeses", cheeses);
         return "cheese/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheese(@RequestParam String cheeseName, @RequestParam String cheeseDescription){
-        cheeses.put(cheeseName, cheeseDescription);
 
-        // Redirect to /cheese
-        return "redirect:";
+        if(!cheeseName.equals("") & isAlpha(cheeseName)){
+            cheeses.put(cheeseName, cheeseDescription);
+            // Redirect to /cheese
+        } return "redirect:";
+
     }
 
     @RequestMapping(value="delete", method = RequestMethod.GET)
@@ -50,11 +53,18 @@ public class CheeseController {
     public String processDeleteCheese(@RequestParam ArrayList<String> cheeseNameDelete){
         for(String cheese : cheeseNameDelete){
             cheeses.remove(cheese);
-            System.out.println(cheese);
-            System.out.println(cheeseNameDelete);
-            System.out.println(cheeses);
         }
         // Redirect to /cheese
         return "redirect:";
+    }
+
+    public boolean isAlpha(String param){
+        boolean isCharacter = true;
+        for(Character c : param.toCharArray()){
+            if(!c.isLetter(c)){
+                isCharacter = false;
+                break;
+            }
+        } return isCharacter;
     }
 }

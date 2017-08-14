@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
-    <h1>I don't really like cheese. I love fruit!</h1>
+    <h1 th:text = "${title}"></h1>
+
+    <nav th:replace="fragments :: navigation"></nav>
+
+    <p th:unless="${cheeses} and ${cheeses.size()}">No cheese :(</p>
+    <br/>
+
+    <table>
+        <tr th:unless="${cheeses.isEmpty()}">
+            <th class="header">Cheese</th>
+            <th class="header">Description</th>
+        </tr>
+        <tr th:each="cheese : ${cheeses}">
+            <td th:text="${cheese.key}"></td>
+            <td class="row" th:text="${cheese.value}"></td>
+        </tr>
+    </table>
+
 </body>
 </html>
