@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class CheeseController {
 
     static ArrayList<Cheese> cheeses = new ArrayList<>();
+    static boolean error;
 
     // Request path: /cheese
     @RequestMapping(value = "")
@@ -29,6 +30,7 @@ public class CheeseController {
     public String displayAddForm(Model model){
         model.addAttribute("title", "Add Cheese");
         model.addAttribute("cheeses", cheeses);
+        model.addAttribute("errorMessage", error);
         return "cheese/add";
     }
 
@@ -39,7 +41,11 @@ public class CheeseController {
             Cheese newCheese = new Cheese(cheeseName, cheeseDescription);
             cheeses.add(newCheese);
             // Redirect to /cheese
-        } return "redirect:";
+            return "redirect:";
+        } else{
+            error = true;
+            return "redirect:cheese/add";
+        }
 
     }
 
