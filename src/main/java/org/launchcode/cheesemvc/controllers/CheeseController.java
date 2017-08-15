@@ -1,5 +1,6 @@
 package org.launchcode.cheesemvc.controllers;
 
+import org.launchcode.cheesemvc.models.Cheese;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,14 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
 
-    static HashMap<String, String> cheeses = new HashMap<>();
+    static ArrayList<Cheese> cheeses = new ArrayList<>();
 
     // Request path: /cheese
     @RequestMapping(value = "")
@@ -36,7 +36,8 @@ public class CheeseController {
     public String processAddCheese(@RequestParam String cheeseName, @RequestParam String cheeseDescription){
 
         if(!cheeseName.equals("") & isAlpha(cheeseName)){
-            cheeses.put(cheeseName, cheeseDescription);
+            Cheese newCheese = new Cheese(cheeseName, cheeseDescription);
+            cheeses.add(newCheese);
             // Redirect to /cheese
         } return "redirect:";
 
@@ -51,8 +52,13 @@ public class CheeseController {
 
     @RequestMapping(value = "delete", method = RequestMethod.POST)
     public String processDeleteCheese(@RequestParam ArrayList<String> cheeseNameDelete){
-        for(String cheese : cheeseNameDelete){
-            cheeses.remove(cheese);
+        for(String cheeseToDelete : cheeseNameDelete){
+            for(Cheese eachCheese : cheeses){
+                if(eachCheese.getName().equals(cheeseToDelete)){
+                    cheeses.remove(eachCheese);
+                    return "redirect:";
+                }
+            }
         }
         // Redirect to /cheese
         return "redirect:";

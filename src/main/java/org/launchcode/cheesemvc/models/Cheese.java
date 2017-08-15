@@ -6,6 +6,11 @@ public class Cheese {
     private String mName;
     private String mDescription;
 
+    // default constructor
+    public Cheese(){
+        mName = "Cheese";
+        mDescription = "Cheese Description";
+    }
     /**
      * Constructor for cheese object
      * @param name is the name of the cheese
