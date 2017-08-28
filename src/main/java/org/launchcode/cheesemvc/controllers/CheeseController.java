@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
-
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
 
     static ArrayList<Cheese> cheeses = new ArrayList<>();
-    static boolean error;
+    static boolean error = false;
 
     // Request path: /cheese
     @RequestMapping(value = "")
@@ -44,7 +43,7 @@ public class CheeseController {
             return "redirect:";
         } else{
             error = true;
-            return "redirect:cheese/add";
+            return "redirect:/cheese/add";
         }
 
     }

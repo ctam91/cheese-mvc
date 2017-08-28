@@ -3,39 +3,34 @@ package org.launchcode.cheesemvc.models;
 public class Cheese {
 
     // Create Cheese class properties
-    private String mName;
-    private String mDescription;
+    private String name;
+    private String description;
 
-    // default constructor
-    public Cheese(){
-        mName = "Cheese";
-        mDescription = "Cheese Description";
-    }
     /**
      * Constructor for cheese object
      * @param name is the name of the cheese
      * @param description describes the cheese
      */
     public Cheese(String name, String description){
-        mName = name;
-        mDescription = description;
+        this.name = name;
+        this.description = description;
     }
 
     // Getter and Setter for name property
     public String getName(){
-        return mName;
+        return name;
     }
 
     public void setName(String aName){
-        mName = aName;
+        this.name = aName;
     }
 
     // Getter and Setter for description property
     public String getDescription(){
-        return mDescription;
+        return description;
     }
 
     public void setDescription(String aDescription){
-        mDescription = aDescription;
+        this.description = aDescription;
     }
 }
