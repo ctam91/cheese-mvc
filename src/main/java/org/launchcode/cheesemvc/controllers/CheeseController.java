@@ -4,6 +4,7 @@ import org.launchcode.cheesemvc.models.Cheese;
 import org.launchcode.cheesemvc.models.CheeseData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,17 +29,10 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddCheese(@RequestParam String cheeseName, @RequestParam String cheeseDescription){
-
-        if(!cheeseName.equals("") & isAlpha(cheeseName)){
-            Cheese newCheese = new Cheese(cheeseName, cheeseDescription);
+    public String processAddCheese(@ModelAttribute Cheese newCheese){
             CheeseData.add(newCheese);
             // Redirect to /cheese
             return "redirect:";
-        } else{
-            return "redirect:/cheese/add";
-        }
-
     }
 
     @RequestMapping(value="delete", method = RequestMethod.GET)
@@ -54,15 +48,5 @@ public class CheeseController {
             CheeseData.remove(cheeseID);
         }
         return "redirect:";
-    }
-
-    public boolean isAlpha(String param){
-        boolean isCharacter = true;
-        for(Character c : param.toCharArray()){
-            if(!c.isLetter(c)){
-                isCharacter = false;
-                break;
-            }
-        } return isCharacter;
     }
 }
