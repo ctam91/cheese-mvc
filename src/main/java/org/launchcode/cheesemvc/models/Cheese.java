@@ -5,15 +5,36 @@ public class Cheese {
     // Create Cheese class properties
     private String name;
     private String description;
+    private int cheeseId;
+    private static int nextId =1;
 
     /**
-     * Constructor for cheese object
+     * Constructor for Cheese object
      * @param name is the name of the cheese
      * @param description describes the cheese
+     * this() refers to the constructor below.
      */
     public Cheese(String name, String description){
+        this();
         this.name = name;
         this.description = description;
+    }
+
+    /**
+     * Default constructor for Cheese object
+     */
+    public Cheese (){
+        cheeseId = nextId;
+        nextId++;
+    }
+
+    // Getter and Setter for Id property
+    public int getCheeseId() {
+        return cheeseId;
+    }
+
+    public void setCheeseId(int cheeseId) {
+        this.cheeseId = cheeseId;
     }
 
     // Getter and Setter for name property
