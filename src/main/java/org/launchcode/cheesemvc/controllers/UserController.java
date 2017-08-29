@@ -32,7 +32,8 @@ public class UserController {
         model.addAttribute("verify", verify);
         model.addAttribute("title", "Sign Up");
         if(verify.equals(user.getPassword())){
-            return "redirect:";
+            model.addAttribute("welcome", "Welcome " + user.getUser() + "!");
+            return "user/index";
         } else{
             return "user/add";
         }
