@@ -1,28 +1,8 @@
-body {
-    font-family: sans-serif;
-}
 
-table {
-    border-collapse: collapse;
-    width: 50%;
-}
-
-table, th, td {
-    border: 0.1em solid black;
-    text-align: center;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.header{
-    font-weight: bold;
-}
-
-.row {
+.error{
     font-style: italic;
+    color: red;
 }
+
+
 
