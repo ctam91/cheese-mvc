@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<nav>
+    <a href="/user">Home</a> |
+    <a href="/user/add">Sign Up</a> |
+    <a href="/cheese">View Cheeses</a>
+
+</nav>
+
 <h1 th:text="${title}">Default Title</h1>
 <span th:if="${user}"><h2 th:text="${welcome}"></h2></span>
+
+
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Date Joined</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td><a th:href="@{'/user/userId=' + ${user.userId}}"><span th:text="${user.user}"></span></a></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.dateJoined}"></td>
+    </tr>
+</table>
+
 </body>
 </html>

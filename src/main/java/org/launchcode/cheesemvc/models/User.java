@@ -1,5 +1,7 @@
 package org.launchcode.cheesemvc.models;
 
+import java.util.Date;
+
 public class User {
 
     private String user;
@@ -7,9 +9,13 @@ public class User {
     private String password;
     private int userId;
     private static int nextUserId = 1;
+    private Date dateJoined;
 
     // Constructor
     public User() {
+        userId = nextUserId;
+        nextUserId++;
+        dateJoined = new Date();
     }
 
     // Getter and setters
@@ -39,6 +45,10 @@ public class User {
 
     public int getUserId() {
         return userId;
+    }
+
+    public Date getDateJoined() {
+        return dateJoined;
     }
 }
 

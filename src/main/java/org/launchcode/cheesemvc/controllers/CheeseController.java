@@ -27,9 +27,9 @@ public class CheeseController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheese(@ModelAttribute Cheese newCheese){
-            CheeseData.add(newCheese);
-            // Redirect to /cheese
-            return "redirect:";
+        CheeseData.add(newCheese);
+        // Redirect to /cheese
+        return "redirect:";
     }
 
     @RequestMapping(value="delete", method = RequestMethod.GET)
