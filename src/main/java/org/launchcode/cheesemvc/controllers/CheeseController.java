@@ -47,13 +47,20 @@ public class CheeseController {
         return "redirect:";
     }
 
-    @RequestMapping(value="edit", method = RequestMethod.GET)
+    @RequestMapping(value="edit/{cheeseId}", method = RequestMethod.GET)
     public String displayEditForm(Model model, @PathVariable int cheeseId){
         // return something
+        Cheese editCheese = CheeseData.getById(cheeseId);
+        model.addAttribute(editCheese);
+        model.addAttribute("title", "Edit Cheese: " + editCheese.getName() + " (id=" + editCheese.getCheeseId() + ")" );
+        return "cheese/edit";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
     public String processEditForm(int cheeseId, String name, String description){
-        //process something
+        Cheese editCheese = CheeseData.getById(cheeseId);
+        editCheese.setName(name);
+        editCheese.setDescription(description);
+        return "redirect:";
     }
 }
