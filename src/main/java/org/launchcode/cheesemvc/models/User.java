@@ -5,6 +5,8 @@ public class User {
     private String user;
     private String email;
     private String password;
+    private int userId;
+    private static int nextUserId = 1;
 
     // Constructor
     public User() {
@@ -33,6 +35,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }
 
