@@ -64,6 +64,7 @@ public class CheeseController {
         // return something
         Cheese editCheese = CheeseData.getById(cheeseId);
         model.addAttribute(editCheese);
+        model.addAttribute("cheeseTypes", CheeseType.values());
         model.addAttribute("title", "Edit Cheese: " + editCheese.getName() + " (id=" + editCheese.getCheeseId() + ")" );
         return "cheese/edit";
     }
@@ -72,6 +73,7 @@ public class CheeseController {
     public String processEditForm(@ModelAttribute @Valid Cheese cheese, Errors errors, Model model){
         if(errors.hasErrors()){
             model.addAttribute(cheese);
+            model.addAttribute("cheeseTypes", CheeseType.values());
             model.addAttribute("title", "Edit Cheese: " + cheese.getName() + " (id=" + cheese.getCheeseId() + ")" );
             return "cheese/edit";
         }
