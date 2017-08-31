@@ -16,10 +16,11 @@ public class User {
     private String email;
 
     @NotNull
-    @Size(min=6, message = "Password must be great than six characters")
+    @Size(min=6, message = "Password must be greater than six characters")
     private String password;
 
     @NotNull
+    @Size(min=6, message = "This field cannot be left blank")
     private String verify;
 
     private int userId;
