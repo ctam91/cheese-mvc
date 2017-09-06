@@ -9,7 +9,7 @@ import java.util.Date;
 public class User {
 
     @NotNull
-    @Size(min=5,max=15)
+    @Size(min=5,max=15, message = "Username must be between 5 and 15 characters")
     private String user;
 
     @Email

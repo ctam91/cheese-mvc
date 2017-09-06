@@ -41,11 +41,6 @@ public class UserController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(Model model, @ModelAttribute @Valid User newUser, Errors errors){
 
-        if(!newUser.getPassword().equals(newUser.getVerifyPassword())){
-            model.addAttribute("title", "Sign Up");
-            model.addAttribute(newUser);
-            return "user/add";
-        }
         if(errors.hasErrors()){
             model.addAttribute("title", "Sign Up");
             model.addAttribute(newUser);
