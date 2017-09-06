@@ -20,8 +20,8 @@ public class User {
     private String password;
 
     @NotNull
-    @Size(min=6, message = "This field cannot be left blank")
-    private String verify;
+    @Size(min=6, message = "Passwords do not match")
+    private String verifyPassword;
 
     private int userId;
     private static int nextUserId = 1;
@@ -57,6 +57,7 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+        checkPassword();
     }
 
     public int getUserId() {
@@ -67,12 +68,20 @@ public class User {
         return dateJoined;
     }
 
-    public void setVerify(String verify) {
-        this.verify = verify;
+    public void setVerifyPassword(String verifyPassword) {
+        this.verifyPassword = verifyPassword;
+        checkPassword();
     }
 
-    public String getVerify() {
-        return verify;
+    public String getVerifyPassword() {
+        return verifyPassword;
+    }
+
+    // Checks if password and verifyPassword are the same. If not, then set verifyPassword to null.
+    private void checkPassword(){
+        if(password != null && verifyPassword != null && !password.equals(verifyPassword)){
+            verifyPassword = null;
+        }
     }
 }
 
