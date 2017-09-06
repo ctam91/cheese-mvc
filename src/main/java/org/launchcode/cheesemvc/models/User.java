@@ -19,8 +19,7 @@ public class User {
     @Size(min=6, message = "Password must be greater than six characters")
     private String password;
 
-    @NotNull
-    @Size(min=6, message = "Passwords do not match")
+    @NotNull(message = "Passwords do not match")
     private String verifyPassword;
 
     private int userId;
