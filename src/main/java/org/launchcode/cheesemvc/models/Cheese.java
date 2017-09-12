@@ -1,13 +1,21 @@
 package org.launchcode.cheesemvc.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Cheese {
 
     // Create Cheese class properties
+    @Id
+    @GeneratedValue
+    private int id;
+
     @NotNull
     @Size(min = 3, max = 15)
     private String name;
@@ -23,9 +31,6 @@ public class Cheese {
 
     private CheeseType type;
 
-    private int cheeseId;
-    private static int nextId =1;
-
     /**
      * Constructor for Cheese object
      * @param name is the name of the cheese
@@ -33,7 +38,6 @@ public class Cheese {
      * this() refers to the constructor below.
      */
     public Cheese(String name, String description){
-        this();
         this.name = name;
         this.description = description;
     }
@@ -42,17 +46,11 @@ public class Cheese {
      * Default constructor for Cheese object
      */
     public Cheese (){
-        cheeseId = nextId;
-        nextId++;
     }
 
-    // Getter and Setter for Id property
-    public int getCheeseId() {
-        return cheeseId;
-    }
-
-    public void setCheeseId(int cheeseId) {
-        this.cheeseId = cheeseId;
+    // Getter for id property
+    public int getId() {
+        return id;
     }
 
     // Getter and Setter for name property
